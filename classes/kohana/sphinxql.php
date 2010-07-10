@@ -12,13 +12,13 @@
  */
 
 /**
- * Wrapper class for Kohana_SphinxQL_Client
+ * Wrapper class for SphinxQL_Core
  *
  * @package kohana-sphinxql
  * @author MasterCJ <mastercj@mastercj.net>
  * @version 0.1
  * @license http://mastercj.net/license.txt
  */
-class SphinxQL_Client extends Kohana_SphinxQL_Client { }
+class Kohana_SphinxQL extends SphinxQL_Core { }
 
 ?>

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-	<title>Docs For Class SphinxQL_Client</title>
+	<title>Docs For Class Kohana_SphinxQL_Core</title>
 	<link rel="stylesheet" type="text/css" id="layout" href="../media/layout.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="../media/style.css" media="all">
 	<link rel="stylesheet" type="text/css" href="../media/print.css" media="print">
@@ -74,18 +74,16 @@
 	</div>
 
 <div id="body">
-	    		<h1>Class: SphinxQL_Client</h1>
-	<p style="margin: 0px;">Source Location: /sphinxql/client.php</p>
+	    		<h1>Class: Kohana_SphinxQL_Core</h1>
+	<p style="margin: 0px;">Source Location: /kohana/sphinxql/core.php</p>
 	
 
 <div class="leftcol">
 	<h3><a href="#class_details">Class Overview</a> <span class="smalllinenumber">[line 22]</span></h3>
-	<div id="classTree"><pre><a href="../kohana-sphinxql/Kohana_SphinxQL_Client.html">Kohana_SphinxQL_Client</a>
-   |
-   --SphinxQL_Client</pre>
+	<div id="classTree"><pre></pre>
 </div>
 	<div class="small">
-	<p>Wrapper class for Kohana_SphinxQL_Client</p>
+	<p>Class for managing a set of SphinxQL_Clients</p>
 		<h4>Author(s):</h4>
 	<ul>
 								<li>MasterCJ &lt;<a href="mailto:mastercj@mastercj.net">mastercj@mastercj.net</a>&gt;</li>
@@ -104,6 +102,7 @@
 <div class="middlecol">
 	<h3><a href="#class_vars">Variables</a></h3>
 	<ul class="small">
+				<li><a href="../kohana-sphinxql/Kohana_SphinxQL_Core.html#var$_handles">$_handles</a></li>
 			</ul>
 	<h3><a href="#class_consts">Constants</a></h3>
 	<ul class="small">
@@ -112,94 +111,38 @@
 <div class="rightcol">
 	<h3><a href="#class_methods">Methods</a></h3>
 	<ul class="small">
+				<li><a href="../kohana-sphinxql/Kohana_SphinxQL_Core.html#method__construct">__construct</a></li>
+				<li><a href="../kohana-sphinxql/Kohana_SphinxQL_Core.html#methodadd_server">add_server</a></li>
+				<li><a href="../kohana-sphinxql/Kohana_SphinxQL_Core.html#methodnew_query">new_query</a></li>
+				<li><a href="../kohana-sphinxql/Kohana_SphinxQL_Core.html#methodquery">query</a></li>
 			</ul>
 </div>
 
 <div id="content">
 <hr>
 	<div class="contents">
+	<h2>Child classes:</h2>
+		<dl>
+	<dt><a href="../kohana-sphinxql/SphinxQL_Core.html">SphinxQL_Core</a></dt>
+		<dd>Wrapper class for Kohana_SphinxQL_Core</dd>
+	</dl>
+	</p>
 	</div>
 
 	<div class="leftCol">
     	<h2>Inherited Variables</h2>
-			<div class="indent">
-		<h3>Class: <a href="../kohana-sphinxql/Kohana_SphinxQL_Client.html">Kohana_SphinxQL_Client</a></h3>
-		<div class="small">
-			<dl>
-						<dt>
-				<a href="../kohana-sphinxql/Kohana_SphinxQL_Client.html#var$_failed">Kohana_SphinxQL_Client::$_failed</a>
-			</dt>
-			<dd>
-				 
-			</dd>
-						<dt>
-				<a href="../kohana-sphinxql/Kohana_SphinxQL_Client.html#var$_handle">Kohana_SphinxQL_Client::$_handle</a>
-			</dt>
-			<dd>
-				 
-			</dd>
-						<dt>
-				<a href="../kohana-sphinxql/Kohana_SphinxQL_Client.html#var$_result">Kohana_SphinxQL_Client::$_result</a>
-			</dt>
-			<dd>
-				 
-			</dd>
-						<dt>
-				<a href="../kohana-sphinxql/Kohana_SphinxQL_Client.html#var$_server">Kohana_SphinxQL_Client::$_server</a>
-			</dt>
-			<dd>
-				 
-			</dd>
-						</dl>
-		</div>
-		</div>
 		<h2>Inherited Constants</h2>
 		</div>
 
 	<div class="rightCol">
 	<h2>Inherited Methods</h2>
-			<div class="indent">
-		<h3>Class: <a href="../kohana-sphinxql/Kohana_SphinxQL_Client.html">Kohana_SphinxQL_Client</a></h3>
-		<dl class="small">
-						<dt>
-				<a href="../kohana-sphinxql/Kohana_SphinxQL_Client.html#method__construct">Kohana_SphinxQL_Client::__construct()</a>
-			</dt>
-			<dd>
-				Constructor
-			</dd>
-					<dt>
-				<a href="../kohana-sphinxql/Kohana_SphinxQL_Client.html#methodconnect">Kohana_SphinxQL_Client::connect()</a>
-			</dt>
-			<dd>
-				Used to attempt connection to the sphinx server, keeps a record of whether it failed to connect or not
-			</dd>
-					<dt>
-				<a href="../kohana-sphinxql/Kohana_SphinxQL_Client.html#methodfetch_all">Kohana_SphinxQL_Client::fetch_all()</a>
-			</dt>
-			<dd>
-				Fetch the whole result set
-			</dd>
-					<dt>
-				<a href="../kohana-sphinxql/Kohana_SphinxQL_Client.html#methodfetch_row">Kohana_SphinxQL_Client::fetch_row()</a>
-			</dt>
-			<dd>
-				Fetch one row of the result set
-			</dd>
-					<dt>
-				<a href="../kohana-sphinxql/Kohana_SphinxQL_Client.html#methodquery">Kohana_SphinxQL_Client::query()</a>
-			</dt>
-			<dd>
-				Perform a query
-			</dd>
-				</dl>
-		</div>
 		</div>
 	<br clear="all">
 	<hr>
 
 	<a name="class_details"></a>
 	<h2>Class Details</h2>
-	<p align="center"><strong>Wrapper class for Kohana_SphinxQL_Client
+	<p align="center"><strong>Class for managing a set of SphinxQL_Clients
 </strong></p>
 <h4>Tags:</h4>
 <ul>
@@ -212,11 +155,150 @@
 	<hr>
 	<a name="class_vars"></a>
 	<h2>Class Variables</h2>
-	
+		<a name="var$_handles"></a>
+	<p></p>
+	<h4>static $_handles = <span class="value">array()</span></h4>
+	<div class="indent">
+		<p class="linenumber">[line 26]</p>
+		<h4>Tags:</h4>
+<ul>
+	<li><b>var</b> - A collection of SphinxQL_Clients</li>
+	<li><b>access</b> - protected</li>
+</ul>
+		<p><b>Type:</b> array</p>
+		<p><b>Overrides:</b> </p>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+
 	<hr>
 	<a name="class_methods"></a>
 	<h2>Class Methods</h2>
 	
+	<a name="method__construct"></a>
+	<p></p>
+	<h3>__construct</h3>
+	<div class="indent">
+		<p>
+		<code>Kohana_SphinxQL_Core __construct(
+[string
+$profile = 'default'], [
+$config = null])</code>
+		</p>
+	
+		<p class="linenumber">[line 34]</p>
+		<p align="center"><strong>Constructor
+</strong></p>
+<h4>Tags:</h4>
+<ul>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+			<li>
+		<span class="type">string</span>
+		<b>$profile</b> 
+		- 
+		The profile name, corresponds to the config file</li>
+			<li>
+		<span class="type">array</span>
+		<b>$config</b> 
+		- 
+		Config settings to override defaults</li>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodadd_server"></a>
+	<p></p>
+	<h3>add_server</h3>
+	<div class="indent">
+		<p>
+		<code>boolean add_server(
+string
+$name, string
+$server)</code>
+		</p>
+	
+		<p class="linenumber">[line 47]</p>
+		<p align="center"><strong>Create a new SphinxQL_Client for a server and add it to the pool of clients
+</strong></p>
+<h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - The status of the creation of the SphinxQL_Client</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+			<li>
+		<span class="type">string</span>
+		<b>$name</b> 
+		- 
+		An alias for this server</li>
+			<li>
+		<span class="type">string</span>
+		<b>$server</b> 
+		- 
+		The address and port of a server</li>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodnew_query"></a>
+	<p></p>
+	<h3>new_query</h3>
+	<div class="indent">
+		<p>
+		<code><a href="../kohana-sphinxql/SphinxQL_Query.html">SphinxQL_Query</a>|false new_query(
+)</code>
+		</p>
+	
+		<p class="linenumber">[line 61]</p>
+		<p align="center"><strong>Create a new SphinxQL_Query, automatically add this SphinxQL_Core as the constructor argument
+</strong></p>
+<h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - The resulting query or false on error</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
+	<a name="methodquery"></a>
+	<p></p>
+	<h3>query</h3>
+	<div class="indent">
+		<p>
+		<code>array|false query(
+<a href="../kohana-sphinxql/SphinxQL_Query.html">SphinxQL_Query</a>|string
+$query)</code>
+		</p>
+	
+		<p class="linenumber">[line 74]</p>
+		<p align="center"><strong>Perform a query, given either a string or a SphinxQL_Query object  Cycles through all available servers until it succeeds.
+</strong></p>
+<p>In the event that it can't find a responsive server, returns false.</p><h4>Tags:</h4>
+<ul>
+	<li><b>return</b> - The result of the query or false</li>
+	<li><b>access</b> - public</li>
+</ul>
+		
+	
+	<h4>Parameters:</h4>
+	<ul>
+			<li>
+		<span class="type"><a href="../kohana-sphinxql/SphinxQL_Query.html">SphinxQL_Query</a>|string</span>
+		<b>$query</b> 
+		- 
+		A query as a string or a SphinxQL_Query object</li>
+		</ul>
+	</div>
+	<p class="top">[ <a href="#top">Top</a> ]</p>
 
 	<hr>
 	<a name="class_consts"></a>

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-	<title>Docs For Class SphinxQL_Client</title>
+	<title>Docs For Class Kohana_SphinxQL</title>
 	<link rel="stylesheet" type="text/css" id="layout" href="../media/layout.css" media="screen">
 	<link rel="stylesheet" type="text/css" href="../media/style.css" media="all">
 	<link rel="stylesheet" type="text/css" href="../media/print.css" media="print">
@@ -74,18 +74,20 @@
 	</div>
 
 <div id="body">
-	    		<h1>Class: SphinxQL_Client</h1>
-	<p style="margin: 0px;">Source Location: /sphinxql/client.php</p>
+	    		<h1>Class: Kohana_SphinxQL</h1>
+	<p style="margin: 0px;">Source Location: /kohana/sphinxql.php</p>
 	
 
 <div class="leftcol">
 	<h3><a href="#class_details">Class Overview</a> <span class="smalllinenumber">[line 22]</span></h3>
-	<div id="classTree"><pre><a href="../kohana-sphinxql/Kohana_SphinxQL_Client.html">Kohana_SphinxQL_Client</a>
+	<div id="classTree"><pre><a href="../kohana-sphinxql/Kohana_SphinxQL_Core.html">Kohana_SphinxQL_Core</a>
    |
-   --SphinxQL_Client</pre>
+   --<a href="../kohana-sphinxql/SphinxQL_Core.html">SphinxQL_Core</a>
+      |
+      --Kohana_SphinxQL</pre>
 </div>
 	<div class="small">
-	<p>Wrapper class for Kohana_SphinxQL_Client</p>
+	<p>Wrapper class for SphinxQL_Core</p>
 		<h4>Author(s):</h4>
 	<ul>
 								<li>MasterCJ &lt;<a href="mailto:mastercj@mastercj.net">mastercj@mastercj.net</a>&gt;</li>
@@ -118,34 +120,22 @@
 <div id="content">
 <hr>
 	<div class="contents">
+	<h2>Child classes:</h2>
+		<dl>
+	<dt><a href="../kohana-sphinxql/SphinxQL.html">SphinxQL</a></dt>
+		<dd>Wrapper class for Kohana_SphinxQL</dd>
+	</dl>
+	</p>
 	</div>
 
 	<div class="leftCol">
     	<h2>Inherited Variables</h2>
 			<div class="indent">
-		<h3>Class: <a href="../kohana-sphinxql/Kohana_SphinxQL_Client.html">Kohana_SphinxQL_Client</a></h3>
+		<h3>Class: <a href="../kohana-sphinxql/Kohana_SphinxQL_Core.html">Kohana_SphinxQL_Core</a></h3>
 		<div class="small">
 			<dl>
 						<dt>
-				<a href="../kohana-sphinxql/Kohana_SphinxQL_Client.html#var$_failed">Kohana_SphinxQL_Client::$_failed</a>
-			</dt>
-			<dd>
-				 
-			</dd>
-						<dt>
-				<a href="../kohana-sphinxql/Kohana_SphinxQL_Client.html#var$_handle">Kohana_SphinxQL_Client::$_handle</a>
-			</dt>
-			<dd>
-				 
-			</dd>
-						<dt>
-				<a href="../kohana-sphinxql/Kohana_SphinxQL_Client.html#var$_result">Kohana_SphinxQL_Client::$_result</a>
-			</dt>
-			<dd>
-				 
-			</dd>
-						<dt>
-				<a href="../kohana-sphinxql/Kohana_SphinxQL_Client.html#var$_server">Kohana_SphinxQL_Client::$_server</a>
+				<a href="../kohana-sphinxql/Kohana_SphinxQL_Core.html#var$_handles">Kohana_SphinxQL_Core::$_handles</a>
 			</dt>
 			<dd>
 				 
@@ -159,37 +149,31 @@
 	<div class="rightCol">
 	<h2>Inherited Methods</h2>
 			<div class="indent">
-		<h3>Class: <a href="../kohana-sphinxql/Kohana_SphinxQL_Client.html">Kohana_SphinxQL_Client</a></h3>
+		<h3>Class: <a href="../kohana-sphinxql/Kohana_SphinxQL_Core.html">Kohana_SphinxQL_Core</a></h3>
 		<dl class="small">
 						<dt>
-				<a href="../kohana-sphinxql/Kohana_SphinxQL_Client.html#method__construct">Kohana_SphinxQL_Client::__construct()</a>
+				<a href="../kohana-sphinxql/Kohana_SphinxQL_Core.html#method__construct">Kohana_SphinxQL_Core::__construct()</a>
 			</dt>
 			<dd>
 				Constructor
 			</dd>
 					<dt>
-				<a href="../kohana-sphinxql/Kohana_SphinxQL_Client.html#methodconnect">Kohana_SphinxQL_Client::connect()</a>
+				<a href="../kohana-sphinxql/Kohana_SphinxQL_Core.html#methodadd_server">Kohana_SphinxQL_Core::add_server()</a>
 			</dt>
 			<dd>
-				Used to attempt connection to the sphinx server, keeps a record of whether it failed to connect or not
+				Create a new SphinxQL_Client for a server and add it to the pool of clients
 			</dd>
 					<dt>
-				<a href="../kohana-sphinxql/Kohana_SphinxQL_Client.html#methodfetch_all">Kohana_SphinxQL_Client::fetch_all()</a>
+				<a href="../kohana-sphinxql/Kohana_SphinxQL_Core.html#methodnew_query">Kohana_SphinxQL_Core::new_query()</a>
 			</dt>
 			<dd>
-				Fetch the whole result set
+				Create a new SphinxQL_Query, automatically add this SphinxQL_Core as the constructor argument
 			</dd>
 					<dt>
-				<a href="../kohana-sphinxql/Kohana_SphinxQL_Client.html#methodfetch_row">Kohana_SphinxQL_Client::fetch_row()</a>
+				<a href="../kohana-sphinxql/Kohana_SphinxQL_Core.html#methodquery">Kohana_SphinxQL_Core::query()</a>
 			</dt>
 			<dd>
-				Fetch one row of the result set
-			</dd>
-					<dt>
-				<a href="../kohana-sphinxql/Kohana_SphinxQL_Client.html#methodquery">Kohana_SphinxQL_Client::query()</a>
-			</dt>
-			<dd>
-				Perform a query
+				Perform a query, given either a string or a SphinxQL_Query object  Cycles through all available servers until it succeeds.
 			</dd>
 				</dl>
 		</div>
@@ -199,7 +183,7 @@
 
 	<a name="class_details"></a>
 	<h2>Class Details</h2>
-	<p align="center"><strong>Wrapper class for Kohana_SphinxQL_Client
+	<p align="center"><strong>Wrapper class for SphinxQL_Core
 </strong></p>
 <h4>Tags:</h4>
 <ul>
@@ -224,7 +208,7 @@
 	</div>
 	<div id="credit">
 		<hr>
-		Documentation generated on Sun, 11 Jul 2010 00:52:24 +0900 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+		Documentation generated on Sun, 11 Jul 2010 00:52:25 +0900 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 	</div>
 </div>
 </body>
