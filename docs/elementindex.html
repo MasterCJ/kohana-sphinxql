@@ -36,6 +36,7 @@
 	<a href="elementindex.html#c">c</a>
 	<a href="elementindex.html#e">e</a>
 	<a href="elementindex.html#f">f</a>
+	<a href="elementindex.html#g">g</a>
 	<a href="elementindex.html#k">k</a>
 	<a href="elementindex.html#l">l</a>
 	<a href="elementindex.html#n">n</a>
@@ -54,7 +55,7 @@
 							<dt>add_field</dt>
 				<dd>in file query.php, method <a href="kohana-sphinxql/Kohana_SphinxQL_Query.html#methodadd_field">Kohana_SphinxQL_Query::add_field()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Adds a entry to the list of fields to return from the query.</dd>
 							<dt>add_fields</dt>
-				<dd>in file query.php, method <a href="kohana-sphinxql/Kohana_SphinxQL_Query.html#methodadd_fields">Kohana_SphinxQL_Query::add_fields()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Adds multiple entries at once to the list of fields to search.</dd>
+				<dd>in file query.php, method <a href="kohana-sphinxql/Kohana_SphinxQL_Query.html#methodadd_fields">Kohana_SphinxQL_Query::add_fields()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Adds multiple entries at once to the list of fields to return.</dd>
 							<dt>add_index</dt>
 				<dd>in file query.php, method <a href="kohana-sphinxql/Kohana_SphinxQL_Query.html#methodadd_index">Kohana_SphinxQL_Query::add_index()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Adds an entry to the list of indexes to be searched.</dd>
 							<dt>add_server</dt>
@@ -107,6 +108,17 @@
 				<dd>in file client.php, method <a href="kohana-sphinxql/Kohana_SphinxQL_Client.html#methodfetch_row">Kohana_SphinxQL_Client::fetch_row()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Fetch one row of the result set</dd>
 					</dl>
 	</div>
+	<a name="g"></a>
+	<a href="elementindex.html#top">top</a><br>
+	<div>
+		<h2>g</h2>
+		<dl class="lettercontents">
+							<dt>group_by</dt>
+				<dd>in file query.php, method <a href="kohana-sphinxql/Kohana_SphinxQL_Query.html#methodgroup_by">Kohana_SphinxQL_Query::group_by()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Sets the GROUP BY condition for the query.</dd>
+							<dt>group_order</dt>
+				<dd>in file query.php, method <a href="kohana-sphinxql/Kohana_SphinxQL_Query.html#methodgroup_order">Kohana_SphinxQL_Query::group_order()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Sets the WITHIN GROUP ORDER BY condition for the query. This is a  Sphinx-specific extension to SQL.</dd>
+					</dl>
+	</div>
 	<a name="k"></a>
 	<a href="elementindex.html#top">top</a><br>
 	<div>
@@ -147,6 +159,8 @@
 		<dl class="lettercontents">
 							<dt>offset</dt>
 				<dd>in file query.php, method <a href="kohana-sphinxql/Kohana_SphinxQL_Query.html#methodoffset">Kohana_SphinxQL_Query::offset()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Sets the offset for the query</dd>
+							<dt>option</dt>
+				<dd>in file query.php, method <a href="kohana-sphinxql/Kohana_SphinxQL_Query.html#methodoption">Kohana_SphinxQL_Query::option()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Adds an OPTION to the query. This is a Sphinx-specific extension to SQL.</dd>
 							<dt>order</dt>
 				<dd>in file query.php, method <a href="kohana-sphinxql/Kohana_SphinxQL_Query.html#methodorder">Kohana_SphinxQL_Query::order()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Adds an ORDER condition to the query.</dd>
 					</dl>
@@ -171,12 +185,20 @@
 	<div>
 		<h2>r</h2>
 		<dl class="lettercontents">
-							<dt>rem_field</dt>
-				<dd>in file query.php, method <a href="kohana-sphinxql/Kohana_SphinxQL_Query.html#methodrem_field">Kohana_SphinxQL_Query::rem_field()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Removes a field from the list of fields to search.</dd>
-							<dt>rem_fields</dt>
-				<dd>in file query.php, method <a href="kohana-sphinxql/Kohana_SphinxQL_Query.html#methodrem_fields">Kohana_SphinxQL_Query::rem_fields()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Removes multiple fields at once from the list of fields to search.</dd>
-							<dt>rem_index</dt>
-				<dd>in file query.php, method <a href="kohana-sphinxql/Kohana_SphinxQL_Query.html#methodrem_index">Kohana_SphinxQL_Query::rem_index()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Removes an entry from the list of indexes to be searched.</dd>
+							<dt>remove_field</dt>
+				<dd>in file query.php, method <a href="kohana-sphinxql/Kohana_SphinxQL_Query.html#methodremove_field">Kohana_SphinxQL_Query::remove_field()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Removes a field from the list of fields to search.</dd>
+							<dt>remove_fields</dt>
+				<dd>in file query.php, method <a href="kohana-sphinxql/Kohana_SphinxQL_Query.html#methodremove_fields">Kohana_SphinxQL_Query::remove_fields()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Removes multiple fields at once from the list of fields to search.</dd>
+							<dt>remove_group_by</dt>
+				<dd>in file query.php, method <a href="kohana-sphinxql/Kohana_SphinxQL_Query.html#methodremove_group_by">Kohana_SphinxQL_Query::remove_group_by()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Removes the GROUP BY condition from the query.</dd>
+							<dt>remove_group_order</dt>
+				<dd>in file query.php, method <a href="kohana-sphinxql/Kohana_SphinxQL_Query.html#methodremove_group_order">Kohana_SphinxQL_Query::remove_group_order()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Removes the WITHIN GROUP ORDER BY condition for the query. This is a  Sphinx-specific extension to SQL.</dd>
+							<dt>remove_index</dt>
+				<dd>in file query.php, method <a href="kohana-sphinxql/Kohana_SphinxQL_Query.html#methodremove_index">Kohana_SphinxQL_Query::remove_index()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Removes an entry from the list of indexes to be searched.</dd>
+							<dt>remove_option</dt>
+				<dd>in file query.php, method <a href="kohana-sphinxql/Kohana_SphinxQL_Query.html#methodremove_option">Kohana_SphinxQL_Query::remove_option()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Removes an OPTION from the query.</dd>
+							<dt>remove_search</dt>
+				<dd>in file query.php, method <a href="kohana-sphinxql/Kohana_SphinxQL_Query.html#methodremove_search">Kohana_SphinxQL_Query::remove_search()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Removes the search text from the query.</dd>
 					</dl>
 	</div>
 	<a name="s"></a>
@@ -222,6 +244,10 @@
 				<dd>in file client.php, variable <a href="kohana-sphinxql/Kohana_SphinxQL_Client.html#var$_failed">Kohana_SphinxQL_Client::$_failed</a></dd>
 							<dt>$_fields</dt>
 				<dd>in file query.php, variable <a href="kohana-sphinxql/Kohana_SphinxQL_Query.html#var$_fields">Kohana_SphinxQL_Query::$_fields</a></dd>
+							<dt>$_group</dt>
+				<dd>in file query.php, variable <a href="kohana-sphinxql/Kohana_SphinxQL_Query.html#var$_group">Kohana_SphinxQL_Query::$_group</a></dd>
+							<dt>$_group_order</dt>
+				<dd>in file query.php, variable <a href="kohana-sphinxql/Kohana_SphinxQL_Query.html#var$_group_order">Kohana_SphinxQL_Query::$_group_order</a></dd>
 							<dt>$_handle</dt>
 				<dd>in file client.php, variable <a href="kohana-sphinxql/Kohana_SphinxQL_Client.html#var$_handle">Kohana_SphinxQL_Client::$_handle</a></dd>
 							<dt>$_handles</dt>
@@ -232,6 +258,8 @@
 				<dd>in file query.php, variable <a href="kohana-sphinxql/Kohana_SphinxQL_Query.html#var$_limit">Kohana_SphinxQL_Query::$_limit</a></dd>
 							<dt>$_offset</dt>
 				<dd>in file query.php, variable <a href="kohana-sphinxql/Kohana_SphinxQL_Query.html#var$_offset">Kohana_SphinxQL_Query::$_offset</a></dd>
+							<dt>$_options</dt>
+				<dd>in file query.php, variable <a href="kohana-sphinxql/Kohana_SphinxQL_Query.html#var$_options">Kohana_SphinxQL_Query::$_options</a></dd>
 							<dt>$_orders</dt>
 				<dd>in file query.php, variable <a href="kohana-sphinxql/Kohana_SphinxQL_Query.html#var$_orders">Kohana_SphinxQL_Query::$_orders</a></dd>
 							<dt>$_result</dt>
@@ -247,16 +275,16 @@
 							<dt>__construct</dt>
 				<dd>in file query.php, method <a href="kohana-sphinxql/Kohana_SphinxQL_Query.html#method__construct">Kohana_SphinxQL_Query::__construct()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Constructor</dd>
 							<dt>__construct</dt>
-				<dd>in file core.php, method <a href="kohana-sphinxql/Kohana_SphinxQL_Core.html#method__construct">Kohana_SphinxQL_Core::__construct()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Constructor</dd>
-							<dt>__construct</dt>
 				<dd>in file client.php, method <a href="kohana-sphinxql/Kohana_SphinxQL_Client.html#method__construct">Kohana_SphinxQL_Client::__construct()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Constructor</dd>
+							<dt>__construct</dt>
+				<dd>in file core.php, method <a href="kohana-sphinxql/Kohana_SphinxQL_Core.html#method__construct">Kohana_SphinxQL_Core::__construct()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Constructor</dd>
 							<dt>__toString</dt>
 				<dd>in file query.php, method <a href="kohana-sphinxql/Kohana_SphinxQL_Query.html#method__toString">Kohana_SphinxQL_Query::__toString()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Magic method, returns the result of build().</dd>
 					</dl>
 	</div>
 	<div id="credit">
 		<hr>
-		Documentation generated on Sun, 11 Jul 2010 11:24:18 +0900 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+		Documentation generated on Sun, 11 Jul 2010 21:43:16 +0900 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 	</div>
 </div>
 </body>

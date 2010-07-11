@@ -21,6 +21,10 @@
  */
 class Kohana_SphinxQL_Query {
 	/**
+	 * @var array The indexes that are to be searched
+	 */
+	protected $_indexes = array();
+	/**
 	 * @var array The fields that are to be returned in the result set
 	 */
 	protected $_fields = array();
@@ -33,13 +37,17 @@ class Kohana_SphinxQL_Query {
 	 */
 	protected $_wheres = array();
 	/**
+	 * @var array The GROUP BY field
+	 */
+	protected $_group = null;
+	/**
+	 * @var array The IN GROUP ORDER BY options
+	 */
+	protected $_group_order = null;
+	/**
 	 * @var array A set of ORDER clauses
 	 */
 	protected $_orders = array();
-	/**
-	 * @var array The indexes that are to be searched
-	 */
-	protected $_indexes = array();
 	/**
 	 * @var integer The offset to start returning results from
 	 */
@@ -49,9 +57,13 @@ class Kohana_SphinxQL_Query {
 	 */
 	protected $_limit = 20;
 	/**
+	 * @var array A set of OPTION clauses
+	 */
+	protected $_options = array();
+	/**
 	 * @var SphinxQL_Core A reference to a SphinxQL_Core object, used for the execute() function
 	 */
-	protected $_sphinx = false;
+	protected $_sphinx = null;
 
 	/**
 	 * Constructor
@@ -99,11 +111,16 @@ class Kohana_SphinxQL_Query {
 		$fields = array();
 		$wheres = array();
 		$orders = array();
-		$fields = array();
+		$options = array();
 		$query = '';
 
-		foreach ($this->_fields as $alias => $field) {
-			$fields[] = sprintf("%s AS %s", $field, is_integer($alias) ? $field : $alias);
+		foreach ($this->_fields as $field) {
+			if (!isset($field['field']) OR !is_string($field['field'])) { next; }
+			if (isset($field['alias']) AND is_string($field['alias'])) {
+				$fields[] = sprintf("%s AS %s", $field['field'], $field['alias']);
+			} else {
+				$fields[] = sprintf("%s", $field['field']);
+			}
 		} unset($field);
 
 		if (is_string($this->_search)) {
@@ -118,11 +135,18 @@ class Kohana_SphinxQL_Query {
 			$orders[] = sprintf("%s %s", $order['field'], $order['sort']);
 		} unset($order);
 
+		foreach ($this->_options as $option) {
+			$options[] = sprintf("%s=%s", $option['name'], $option['value']);
+		} unset($option);
+
 		$query .= sprintf('SELECT %s ', count($fields) ? implode(', ', $fields) : '*');
 		$query .= sprintf('FROM %s ', implode(',', $this->_indexes));
 		if (count($wheres) > 0) { $query .= sprintf('WHERE %s ', implode(' AND ', $wheres)); }
+		if (is_string($this->_group)) { $query .= sprintf('GROUP BY %s ', $this->_group); }
+		if (is_array($this->_group_order)) { $query .= sprintf('WITHIN GROUP ORDER BY %s %s ', $this->_group_order['field'], $this->_group_order['sort']); }
 		if (count($orders) > 0) { $query .= sprintf('ORDER BY %s ', implode(', ', $orders)); }
-		$query .= sprintf("LIMIT %d, %d", $this->_offset, $this->_limit);
+		$query .= sprintf('LIMIT %d, %d ', $this->_offset, $this->_limit);
+		if (count($options) > 0) { $query .= sprintf('OPTION %s ', implode(', ', $options)); }
 		while (substr($query, -1, 1) == ' ') { $query = substr($query, 0, -1); }
 
 		return $query;
@@ -148,7 +172,7 @@ class Kohana_SphinxQL_Query {
 	 * @param string The index to remove
 	 * @return SphinxQL_Query $this
 	 */
-	public function rem_index($index) {
+	public function remove_index($index) {
 		if (is_string($index)) { 
 			while ($pos = array_search($index, $this->_indexes)) {
 				unset($this->_indexes[$pos]);
@@ -162,27 +186,39 @@ class Kohana_SphinxQL_Query {
 	 * Adds a entry to the list of fields to return from the query.
 	 *
 	 * @param string Field to add
-	 * @param string Alias for that field
+	 * @param string Alias for that field, optional
 	 * @return SphinxQL_Query $this
 	 */
-	public function add_field($field, $alias) {
-		if (is_string($field) && is_string($alias)) {
-			$this->_fields[$alias] = $field;
+	public function add_field($field, $alias=null) {
+		if (!is_string($alias)) {
+			$alias = null;
+		}
+
+		if (is_string($field)) {
+			$this->_fields[] = array('field' => $field, 'alias' => $alias);
 		}
 
 		return $this;
 	}
 
 	/**
-	 * Adds multiple entries at once to the list of fields to search.
+	 * Adds multiple entries at once to the list of fields to return.
+	 * Takes an array structured as so:
+	 * array(array('field' => 'user_id', 'alias' => 'user')), ...)
+	 * The alias is optional.
 	 *
-	 * @param array Array of alias => field pairs to add
+	 * @param array Array of fields to add
 	 * @return SphinxQL_Query $this
 	 */
 	public function add_fields($array) {
 		if (is_array($array)) {
-			foreach ($array as $alias => $field) {
-				$this->add_field($field, $alias);
+			foreach ($array as $entry) {
+				if (is_array($entry) AND isset($entry['field'])) {
+					if (!isset($entry['alias']) OR is_string($entry['alias'])) {
+						$entry['alias'] = null;
+						$this->add_field($entry['field'], $entry['alias']);
+					}
+				}
 			}
 		}
 
@@ -195,8 +231,8 @@ class Kohana_SphinxQL_Query {
 	 * @param string Alias of the field to remove
 	 * @return SphinxQL_Query $this
 	 */
-	public function rem_field($alias) {
-		if (is_string($alias) && array_key_exists($this->_fields, $alias)) { 
+	public function remove_field($alias) {
+		if (is_string($alias) AND array_key_exists($this->_fields, $alias)) {
 			unset($this->_fields[$alias]);
 		}
 
@@ -209,10 +245,10 @@ class Kohana_SphinxQL_Query {
 	 * @param array List of aliases of fields to remove
 	 * @return SphinxQL_Query $this
 	 */
-	public function rem_fields($array) {
+	public function remove_fields($array) {
 		if (is_array($array)) {
 			foreach ($array as $alias) {
-				$this->rem_field($alias);
+				$this->remove_field($alias);
 			}
 		}
 
@@ -226,7 +262,21 @@ class Kohana_SphinxQL_Query {
 	 * @return SphinxQL_Query $this
 	 */
 	public function search($search) {
-		if (is_string($search)) { $this->_search = $search; }
+		if (is_string($search)) {
+			$this->_search = $search;
+		}
+
+		return $this;
+	}
+
+	/**
+	 * Removes the search text from the query.
+	 *
+	 * @return SphinxQL_Query $this
+	 */
+	public function remove_search() {
+		$this->_search = null;
+
 		return $this;
 	}
 
@@ -237,7 +287,10 @@ class Kohana_SphinxQL_Query {
 	 * @return SphinxQL_Query $this
 	 */
 	public function offset($offset) {
-		if (is_integer($offset)) { $this->_offset = $offset; }
+		if (is_integer($offset)) {
+			$this->_offset = $offset;
+		}
+
 		return $this;
 	}
 
@@ -248,21 +301,24 @@ class Kohana_SphinxQL_Query {
 	 * @return SphinxQL_Query $this
 	 */
 	public function limit($limit) {
-		if (is_integer($limit)) { $this->_limit = $limit; }
+		if (is_integer($limit)) {
+			$this->_limit = $limit;
+		}
+
 		return $this;
 	}
 
 	/**
 	 * Adds a WHERE condition to the query.
 	 *
-	 * @param string The field for the condition
-	 * @param string The value to compare the field to
+	 * @param string The field/expression for the condition
+	 * @param string The field/expression/value to compare the field to
 	 * @param string The operator (=, <, >, etc)
-	 * @param string Whether or not to quote the value (for use with 'IN' operators mainly)
+	 * @param string Whether or not to quote the value, defaults to true
 	 * @return SphinxQL_Query $this
 	 */
 	public function where($field, $value, $operator=null, $quote=true) {
-		if (!in_array($operator, array('=', '!=', '>', '<', '>=', '<=', 'AND', 'NOT IN', 'IN'))) { $operator = '='; }
+		if (!in_array($operator, array('=', '!=', '>', '<', '>=', '<=', 'AND', 'NOT IN', 'IN', 'BETWEEN'))) { $operator = '='; }
 		if (!is_string($field)) { return false; }
 		if (!is_string($value)) { return false; }
 		$quote = ($quote === true) ? true : false;
@@ -275,36 +331,139 @@ class Kohana_SphinxQL_Query {
 	/**
 	 * Adds a WHERE <field> <not> IN (<value x>, <value y>, <value ...>) condition to the query, mainly used for MVAs.
 	 *
-	 * @param string The field for the condition
+	 * @param string The field/expression for the condition
 	 * @param array The values to compare the field to
 	 * @param string Whether this is a match-all, match-any (default) or match-none condition
 	 * @return SphinxQL_Query $this
 	 */
 	public function where_in($field, $values, $how='any') {
-		if (!is_array($values)) { $values = array($values); }
+		if (!is_array($values)) {
+			$values = array($values);
+		}
+
 		if ($how == 'all') {
 			foreach ($values as $value) {
-				$this->where_in($field, $value, 'any');
+				$this->where($field, $value, '=');
 			}
 		} elseif ($how == 'none') {
-			$this->where($field, '('.implode(', ', $values).')', 'NOT IN', false);
+			foreach ($values as $value) {
+				$this->where($field, $value, '!=');
+			}
 		} else {
 			$this->where($field, '('.implode(', ', $values).')', 'IN', false);
 		}
+
+		return $this;
+	}
+
+	/**
+	 * Sets the GROUP BY condition for the query.
+	 *
+	 * @param string The field/expression for the condition
+	 * @return SphinxQL_Query $this
+	 */
+	public function group_by($field) {
+		if (is_string($field)) {
+			$this->_group = $field;
+		}
+
+		return $this;
+	}
+
+	/**
+	 * Removes the GROUP BY condition from the query.
+	 *
+	 * @param string The field/expression for the condition
+	 * @param string The alias for the result set (optional)
+	 * @return SphinxQL_Query $this
+	 */
+	public function remove_group_by($field) {
+		$this->_group = null;
+
 		return $this;
 	}
 
 	/**
 	 * Adds an ORDER condition to the query.
 	 *
-	 * @param string The field for the condition
+	 * @param string The field/expression for the condition
 	 * @param string The sort type (can be 'asc' or 'desc', capitals are also OK)
 	 * @return SphinxQL_Query $this
 	 */
 	public function order($field, $sort) {
-		if (is_string($field) && is_string($sort)) {
+		if (is_string($field) AND is_string($sort)) {
 			$this->_orders[] = array('field' => $field, 'sort' => $sort);
 		}
+
+		return $this;
+	}
+
+	/**
+	 * Sets the WITHIN GROUP ORDER BY condition for the query. This is a
+	 * Sphinx-specific extension to SQL.
+	 *
+	 * @param string The field/expression for the condition
+	 * @param string The sort type (can be 'asc' or 'desc', capitals are also OK)
+	 * @return SphinxQL_Query $this
+	 */
+	public function group_order($field, $sort) {
+		if (is_string($field) AND is_string($sort)) {
+			$this->_group_order = array('field' => $field, 'sort' => $sort);
+		}
+
+		return $this;
+	}
+
+	/**
+	 * Removes the WITHIN GROUP ORDER BY condition for the query. This is a
+	 * Sphinx-specific extension to SQL.
+	 *
+	 * @return SphinxQL_Query $this
+	 */
+	public function remove_group_order() {
+		$this->_group_order = null;
+
+		return $this;
+	}
+
+	/**
+	 * Adds an OPTION to the query. This is a Sphinx-specific extension to SQL.
+	 *
+	 * @param string The option name
+	 * @param string The option value
+	 * @return SphinxQL_Query $this
+	 */
+	public function option($name, $value) {
+		if (is_string($name) AND is_string($value)) {
+			$this->_options[] = array('name' => $name, 'value' => $value);
+		}
+
+		return $this;
+	}
+
+	/**
+	 * Removes an OPTION from the query.
+	 *
+	 * @param string The option name
+	 * @param string The option value, optional
+	 * @return SphinxQL_Query $this
+	 */
+	public function remove_option($name, $value=null) {
+		$changed = false;
+
+		if (is_string($name) AND (($value == null) OR is_string($value))) {
+			foreach ($this->_options as $key => $option) {
+				if (($option['name'] == $name) AND (($value == null) OR ($value == $option['value']))) {
+					unset($this->_options[$key]);
+					$changed = true;
+				}
+			}
+
+			if ($changed) {
+				array_keys($this->_options);
+			}
+		}
+
 		return $this;
 	}
 

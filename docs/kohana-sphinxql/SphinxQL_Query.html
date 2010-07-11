@@ -133,6 +133,18 @@
 				 
 			</dd>
 						<dt>
+				<a href="../kohana-sphinxql/Kohana_SphinxQL_Query.html#var$_group">Kohana_SphinxQL_Query::$_group</a>
+			</dt>
+			<dd>
+				 
+			</dd>
+						<dt>
+				<a href="../kohana-sphinxql/Kohana_SphinxQL_Query.html#var$_group_order">Kohana_SphinxQL_Query::$_group_order</a>
+			</dt>
+			<dd>
+				 
+			</dd>
+						<dt>
 				<a href="../kohana-sphinxql/Kohana_SphinxQL_Query.html#var$_indexes">Kohana_SphinxQL_Query::$_indexes</a>
 			</dt>
 			<dd>
@@ -146,6 +158,12 @@
 			</dd>
 						<dt>
 				<a href="../kohana-sphinxql/Kohana_SphinxQL_Query.html#var$_offset">Kohana_SphinxQL_Query::$_offset</a>
+			</dt>
+			<dd>
+				 
+			</dd>
+						<dt>
+				<a href="../kohana-sphinxql/Kohana_SphinxQL_Query.html#var$_options">Kohana_SphinxQL_Query::$_options</a>
 			</dt>
 			<dd>
 				 
@@ -201,7 +219,7 @@
 				<a href="../kohana-sphinxql/Kohana_SphinxQL_Query.html#methodadd_fields">Kohana_SphinxQL_Query::add_fields()</a>
 			</dt>
 			<dd>
-				Adds multiple entries at once to the list of fields to search.
+				Adds multiple entries at once to the list of fields to return.
 			</dd>
 					<dt>
 				<a href="../kohana-sphinxql/Kohana_SphinxQL_Query.html#methodadd_index">Kohana_SphinxQL_Query::add_index()</a>
@@ -222,6 +240,18 @@
 				Executes the query and returns the results
 			</dd>
 					<dt>
+				<a href="../kohana-sphinxql/Kohana_SphinxQL_Query.html#methodgroup_by">Kohana_SphinxQL_Query::group_by()</a>
+			</dt>
+			<dd>
+				Sets the GROUP BY condition for the query.
+			</dd>
+					<dt>
+				<a href="../kohana-sphinxql/Kohana_SphinxQL_Query.html#methodgroup_order">Kohana_SphinxQL_Query::group_order()</a>
+			</dt>
+			<dd>
+				Sets the WITHIN GROUP ORDER BY condition for the query. This is a  Sphinx-specific extension to SQL.
+			</dd>
+					<dt>
 				<a href="../kohana-sphinxql/Kohana_SphinxQL_Query.html#methodlimit">Kohana_SphinxQL_Query::limit()</a>
 			</dt>
 			<dd>
@@ -234,28 +264,58 @@
 				Sets the offset for the query
 			</dd>
 					<dt>
+				<a href="../kohana-sphinxql/Kohana_SphinxQL_Query.html#methodoption">Kohana_SphinxQL_Query::option()</a>
+			</dt>
+			<dd>
+				Adds an OPTION to the query. This is a Sphinx-specific extension to SQL.
+			</dd>
+					<dt>
 				<a href="../kohana-sphinxql/Kohana_SphinxQL_Query.html#methodorder">Kohana_SphinxQL_Query::order()</a>
 			</dt>
 			<dd>
 				Adds an ORDER condition to the query.
 			</dd>
 					<dt>
-				<a href="../kohana-sphinxql/Kohana_SphinxQL_Query.html#methodrem_field">Kohana_SphinxQL_Query::rem_field()</a>
+				<a href="../kohana-sphinxql/Kohana_SphinxQL_Query.html#methodremove_field">Kohana_SphinxQL_Query::remove_field()</a>
 			</dt>
 			<dd>
 				Removes a field from the list of fields to search.
 			</dd>
 					<dt>
-				<a href="../kohana-sphinxql/Kohana_SphinxQL_Query.html#methodrem_fields">Kohana_SphinxQL_Query::rem_fields()</a>
+				<a href="../kohana-sphinxql/Kohana_SphinxQL_Query.html#methodremove_fields">Kohana_SphinxQL_Query::remove_fields()</a>
 			</dt>
 			<dd>
 				Removes multiple fields at once from the list of fields to search.
 			</dd>
 					<dt>
-				<a href="../kohana-sphinxql/Kohana_SphinxQL_Query.html#methodrem_index">Kohana_SphinxQL_Query::rem_index()</a>
+				<a href="../kohana-sphinxql/Kohana_SphinxQL_Query.html#methodremove_group_by">Kohana_SphinxQL_Query::remove_group_by()</a>
+			</dt>
+			<dd>
+				Removes the GROUP BY condition from the query.
+			</dd>
+					<dt>
+				<a href="../kohana-sphinxql/Kohana_SphinxQL_Query.html#methodremove_group_order">Kohana_SphinxQL_Query::remove_group_order()</a>
+			</dt>
+			<dd>
+				Removes the WITHIN GROUP ORDER BY condition for the query. This is a  Sphinx-specific extension to SQL.
+			</dd>
+					<dt>
+				<a href="../kohana-sphinxql/Kohana_SphinxQL_Query.html#methodremove_index">Kohana_SphinxQL_Query::remove_index()</a>
 			</dt>
 			<dd>
 				Removes an entry from the list of indexes to be searched.
+			</dd>
+					<dt>
+				<a href="../kohana-sphinxql/Kohana_SphinxQL_Query.html#methodremove_option">Kohana_SphinxQL_Query::remove_option()</a>
+			</dt>
+			<dd>
+				Removes an OPTION from the query.
+			</dd>
+					<dt>
+				<a href="../kohana-sphinxql/Kohana_SphinxQL_Query.html#methodremove_search">Kohana_SphinxQL_Query::remove_search()</a>
+			</dt>
+			<dd>
+				Removes the search text from the query.
 			</dd>
 					<dt>
 				<a href="../kohana-sphinxql/Kohana_SphinxQL_Query.html#methodsearch">Kohana_SphinxQL_Query::search()</a>
@@ -320,7 +380,7 @@
 	</div>
 	<div id="credit">
 		<hr>
-		Documentation generated on Sun, 11 Jul 2010 11:24:19 +0900 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+		Documentation generated on Sun, 11 Jul 2010 21:43:17 +0900 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 	</div>
 </div>
 </body>

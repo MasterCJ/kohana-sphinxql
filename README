@@ -33,14 +33,25 @@ Usage
 	$query = $sphinxql->new_query();
 	$query->add_index('my_index')
 		->add_field('field_name', 'alias')
-		->add_fields(array('title_alias' => 'title', 'user_alias' => 'user'))
+		->add_field('another_field')
+		->add_fields(array(array('field' => 'title', 'alias' => 'title_alias'), array('field' => 'user_id')))
 		->search('some words to search for')
-		->where('time', time()-3600, '>')
-			// field, value, operator='=', quote=false
-		->where_in('tags', array(1, 2, 3))
-			// field, array values, all=false
-		->order('@weight desc')
-		->offset(0)->limit(20);
+			// string (is given directly to sphinx, so can contain @field directives)
+		->where('time', time()-3600, '>', false)
+			// field, value, operator='=', quote=true
+		->where_in('tags_i_need', array(1, 2, 3), 'all')
+		->where_in('tags_i_do_not_want', array(4, 5, 6), 'none')
+		->where_in('tags_i_would_like_one_of', array(7, 8, 9), 'any')
+			// field, array values, type='any'
+		->order('@weight', 'desc')
+			// field, sort='desc'
+		->offset(10)->limit(50)
+			// defaults are 0 and 20, same as the sphinx defaults
+		->option('max_query_time', '100')
+			// option name, option value
+		->group_by('field')
+		->in_group_order_by('another_field', 'desc');
+			// sphinx-specific, check their docs
 	$result = $query->execute();
 
 All the methods in SphinxQL_Query are chainable apart from execute(), so
