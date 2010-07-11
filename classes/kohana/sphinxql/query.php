@@ -262,7 +262,7 @@ class Kohana_SphinxQL_Query {
 	 * @return SphinxQL_Query $this
 	 */
 	public function where($field, $value, $operator=null, $quote=true) {
-		if (!in_array($operator, array('=', '!=', '>', '<', '>=', '<=', 'AND', 'NOT', 'IN'))) { $operator = '='; }
+		if (!in_array($operator, array('=', '!=', '>', '<', '>=', '<=', 'AND', 'NOT IN', 'IN'))) { $operator = '='; }
 		if (!is_string($field)) { return false; }
 		if (!is_string($value)) { return false; }
 		$quote = ($quote === true) ? true : false;
@@ -273,22 +273,23 @@ class Kohana_SphinxQL_Query {
 	}
 
 	/**
-	 * Adds a WHERE <field> IN (<value x>, <value y>, <value ...>) condition to the query, mainly used for MVAs.
+	 * Adds a WHERE <field> <not> IN (<value x>, <value y>, <value ...>) condition to the query, mainly used for MVAs.
 	 *
 	 * @param string The field for the condition
 	 * @param array The values to compare the field to
-	 * @param boolean Whether or not this is a match-any or match-all condition
+	 * @param string Whether this is a match-all, match-any (default) or match-none condition
 	 * @return SphinxQL_Query $this
 	 */
-	public function where_in($field, $values, $all=false) {
-		$string = '';
+	public function where_in($field, $values, $how='any') {
 		if (!is_array($values)) { $values = array($values); }
-		if ($all) {
+		if ($how == 'all') {
 			foreach ($values as $value) {
-				$this->where($field, '('.$value.')', 'IN', false);
+				$this->where_in($field, $value, 'any');
 			}
-		} else {
+		} elseif ($how == 'any') {
 			$this->where($field, '('.implode(', ', $values).')', 'IN', false);
+		} elseif ($how == 'none') {
+			$this->where($field, '('.implode(', ', $values).')', 'NOT IN', false);
 		}
 		return $this;
 	}

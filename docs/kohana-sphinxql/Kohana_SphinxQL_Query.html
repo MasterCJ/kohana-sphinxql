@@ -32,21 +32,21 @@
 				<div id="index">
 			<div id="files">
 								Files:<br>
-								<a href="../kohana-sphinxql/_sphinxql---client.php.html">		client.php
+								<a href="../kohana-sphinxql/_kohana---sphinxql---client.php.html">		client.php
 		</a><br>
-			<a href="../kohana-sphinxql/_kohana---sphinxql---client.php.html">		client.php
+			<a href="../kohana-sphinxql/_sphinxql---client.php.html">		client.php
 		</a><br>
 			<a href="../kohana-sphinxql/_kohana---sphinxql---core.php.html">		core.php
 		</a><br>
 			<a href="../kohana-sphinxql/_sphinxql---core.php.html">		core.php
 		</a><br>
-			<a href="../kohana-sphinxql/_sphinxql---query.php.html">		query.php
-		</a><br>
 			<a href="../kohana-sphinxql/_kohana---sphinxql---query.php.html">		query.php
 		</a><br>
-			<a href="../kohana-sphinxql/_kohana---sphinxql.php.html">		sphinxql.php
+			<a href="../kohana-sphinxql/_sphinxql---query.php.html">		query.php
 		</a><br>
 			<a href="../kohana-sphinxql/_sphinxql.php.html">		sphinxql.php
+		</a><br>
+			<a href="../kohana-sphinxql/_kohana---sphinxql.php.html">		sphinxql.php
 		</a><br>
 				</div>
 			<div id="interfaces">
@@ -447,7 +447,7 @@ $index)</code>
 )</code>
 		</p>
 	
-		<p class="linenumber">[line 315]</p>
+		<p class="linenumber">[line 316]</p>
 		<p align="center"><strong>Executes the query and returns the results
 </strong></p>
 <h4>Tags:</h4>
@@ -531,7 +531,7 @@ $field, string
 $sort)</code>
 		</p>
 	
-		<p class="linenumber">[line 303]</p>
+		<p class="linenumber">[line 304]</p>
 		<p align="center"><strong>Adds an ORDER condition to the query.
 </strong></p>
 <h4>Tags:</h4>
@@ -756,12 +756,12 @@ $quote = true])</code>
 		<code><a href="../kohana-sphinxql/SphinxQL_Query.html">SphinxQL_Query</a> where_in(
 string
 $field, array
-$values, [boolean
-$all = false])</code>
+$values, [string
+$how = 'any'])</code>
 		</p>
 	
 		<p class="linenumber">[line 283]</p>
-		<p align="center"><strong>Adds a WHERE &lt;field&gt; IN (&lt;value x&gt;, &lt;value y&gt;, &lt;value ...&gt;) condition to the query, mainly used for MVAs.
+		<p align="center"><strong>Adds a WHERE &lt;field&gt; &lt;not&gt; IN (&lt;value x&gt;, &lt;value y&gt;, &lt;value ...&gt;) condition to the query, mainly used for MVAs.
 </strong></p>
 <h4>Tags:</h4>
 <ul>
@@ -782,10 +782,10 @@ $all = false])</code>
 		- 
 		The values to compare the field to</li>
 			<li>
-		<span class="type">boolean</span>
-		<b>$all</b> 
+		<span class="type">string</span>
+		<b>$how</b> 
 		- 
-		Whether or not this is a match-any or match-all condition</li>
+		Whether this is a match-all, match-any (default) or match-none condition</li>
 		</ul>
 	</div>
 	<p class="top">[ <a href="#top">Top</a> ]</p>
@@ -819,7 +819,7 @@ $all = false])</code>
 	</div>
 	<div id="credit">
 		<hr>
-		Documentation generated on Sun, 11 Jul 2010 00:52:24 +0900 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+		Documentation generated on Sun, 11 Jul 2010 11:24:19 +0900 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 	</div>
 </div>
 </body>
