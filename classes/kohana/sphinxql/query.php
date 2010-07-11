@@ -286,10 +286,10 @@ class Kohana_SphinxQL_Query {
 			foreach ($values as $value) {
 				$this->where_in($field, $value, 'any');
 			}
-		} elseif ($how == 'any') {
-			$this->where($field, '('.implode(', ', $values).')', 'IN', false);
 		} elseif ($how == 'none') {
 			$this->where($field, '('.implode(', ', $values).')', 'NOT IN', false);
+		} else {
+			$this->where($field, '('.implode(', ', $values).')', 'IN', false);
 		}
 		return $this;
 	}
